@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -130,7 +131,7 @@ public class GameActivity extends AppCompatActivity {
         cells.remove(zuk_pos);
         cells.add(zuk_pos, a_text);
         fill_grid();
-        //penambahan +1 tiap kali ada perubahan tataletak pada button
+        //penambahan +1 tiap kali ada perubahan tata letak pada button
         move_counter.setText(Integer.toString(Integer.parseInt((String) move_counter.getText()) + 1));
         //perulangan jika hampir mencapai target goal
         for (int i = 0; i < 9; i++) {
@@ -146,51 +147,35 @@ public class GameActivity extends AppCompatActivity {
     public void fill_grid() {
         for (int i = 0; i < 9; i++) {
             int text = cells.get(i);
-            RelativeLayout.LayoutParams absParams = new RelativeLayout.LayoutParams(buttons[text].getLayoutParams());
+            GridView.LayoutParams absParams = new GridView.LayoutParams(buttons[text].getLayoutParams());
             switch (i) {
+
+
                 case (0):
-                    absParams.x = 5;
-                    absParams.y = 5;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (1):
-                    absParams.x = 110;
-                    absParams.y = 5;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (2):
-                    absParams.x = 215;
-                    absParams.y = 5;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (3):
-                    absParams.x = 5;
-                    absParams.y = 110;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (4):
-                    absParams.x = 110;
-                    absParams.y = 110;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (5):
-                    absParams.x = 215;
-                    absParams.y = 110;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (6):
-                    absParams.x = 5;
-                    absParams.y = 215;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (7):
-                    absParams.x = 110;
-                    absParams.y = 215;
                     buttons[text].setLayoutParams(absParams);
                     break;
                 case (8):
-                    absParams.x = 215;
-                    absParams.y = 215;
                     buttons[text].setLayoutParams(absParams);
                     break;
             }
@@ -198,7 +183,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public int find_pos(int element) {
-        int i = 0;
+        int i;
         for (i = 0; i < 9; i++) {
             if (cells.get(i) == element) {
                 break;
